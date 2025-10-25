@@ -1,0 +1,20 @@
+package com.zx.behavioral.interpreter;
+
+/**
+ * 非终结表达式
+ */
+public class OrExpression extends IDCardExpression{
+    //组合两个终结表达式，最终判断结果是终结表达式判断出来的，这里只是一个桥梁
+    private  IDCardExpression cityExp;
+    private  IDCardExpression typeExp;
+    public OrExpression(IDCardExpression cityExp, IDCardExpression typeExp) {
+        this.cityExp = cityExp;
+        this.typeExp = typeExp;
+    }
+    @Override
+    public boolean interpret(String expression) {
+        //定义所有终结表达式的合并逻辑
+         return cityExp.interpret(expression)||typeExp.interpret(expression);
+
+    }
+}
